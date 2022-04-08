@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @SpringBootApplication
 @Controller
@@ -19,6 +20,7 @@ public class Application {
     String message = "";
 
     @RequestMapping(path = "/healthz", method = RequestMethod.GET)
+    @ResponseBody
     public String healthCheck() {
         return "healthy";
     }
