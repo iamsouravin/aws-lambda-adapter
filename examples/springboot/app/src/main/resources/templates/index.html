@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Pet Store</title>
+        <style type="text/css" rel="stylesheet">
+            * {
+              box-sizing: border-box;
+            }
+            
+            body {
+              font-family: Arial, Helvetica, sans-serif;
+            }
+            
+            /* Float four columns side by side */
+            .column {
+              float: left;
+              width: 20%;
+              padding: 10px;
+            }
+            
+            /* Remove extra left and right margins, due to padding */
+            .row {margin: 0 -5px;}
+            
+            /* Clear floats after the columns */
+            .row:after {
+              content: "";
+              display: table;
+              clear: both;
+            }
+            
+            /* Responsive columns */
+            @media screen and (max-width: 800px) {
+              .column {
+                width: 100%;
+                display: block;
+                margin-bottom: 20px;
+              }
+            }
+            
+            /* Style the counter cards */
+            .card {
+              box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+              padding: 16px;
+              text-align: center;
+              background-color: #f1f1f1;
+            }
+        </style>
+        <script type="text/javascript">
+            function reqListener() {
+                var pets = JSON.parse(this.responseText),
+                    waitSpan = document.getElementById('waitSpan'),
+                    petColumn = null,
+                    petCard = null,
+                    petNameHeader = null,
+                    petBreedLine = null,
+                    petsContainer = document.getElementById('petsContainer'),
+                    pet = null;
+                
+                petsContainer.removeChild(waitSpan);
+                for (var i in pets) {
+                    pet = pets[i];
+                    petColumn = document.createElement('div');
+                    petColumn.className = 'column';
+                    petCard = document.createElement('div');
+                    petCard.className = 'card';
+                    petNameHeader = document.createElement('h3');
+                    petNameHeader.innerHTML = pet.name;
+                    petCard.appendChild(petNameHeader);
+                    petBreedLine = document.createElement('p');
+                    petBreedLine.innerHTML = pet.breed;
+                    petCard.appendChild(petBreedLine);
+                    petColumn.appendChild(petCard);
+                    petsContainer.appendChild(petColumn);
+                }
+            }
+            function loadPets() {
+                var oReq = new XMLHttpRequest();
+                oReq.addEventListener("load", reqListener);
+                oReq.open("GET", "pets");
+                oReq.send();
+            }
+        </script>
+    </head>
+    <body onload="loadPets()">
+        <h1>Simple Pet Store</h1>
+        <div id="petsContainer" class="row">
+            <span id="waitSpan">Please wait while we load the pets...</span>
+        </div>
+    </body>
+</html>
