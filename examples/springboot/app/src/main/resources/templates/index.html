@@ -54,8 +54,10 @@
                     petCard = null,
                     petNameHeader = null,
                     petBreedLine = null,
+                    petDobLine = null,
                     petsContainer = document.getElementById('petsContainer'),
-                    pet = null;
+                    pet = null,
+                    dob = null;
                 
                 petsContainer.removeChild(waitSpan);
                 for (var i in pets) {
@@ -70,6 +72,10 @@
                     petBreedLine = document.createElement('p');
                     petBreedLine.innerHTML = pet.breed;
                     petCard.appendChild(petBreedLine);
+                    dob = new Date(pet.dateOfBirth);
+                    petDobLine = document.createElement('p');
+                    petDobLine.innerHTML = 'Born on ' + dob.getUTCFullYear() + '-' + leftPadZero(dob.getUTCMonth() + 1) + '-' + leftPadZero(dob.getUTCDate());
+                    petCard.appendChild(petDobLine);
                     petColumn.appendChild(petCard);
                     petsContainer.appendChild(petColumn);
                 }
@@ -79,6 +85,9 @@
                 oReq.addEventListener("load", reqListener);
                 oReq.open("GET", "pets");
                 oReq.send();
+            }
+            function leftPadZero(val) {
+                return val < 10 ? '0' + val : val;
             }
         </script>
     </head>
