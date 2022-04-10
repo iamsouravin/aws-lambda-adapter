@@ -80,11 +80,11 @@ public class PetData {
     }
 
     public static String getRandomBreed() {
-        return breeds.get(ThreadLocalRandom.current().nextInt(0, breeds.size() - 1));
+        return breeds.get(ThreadLocalRandom.current().nextInt(0, breeds.size()));
     }
 
     public static String getRandomName() {
-        return names.get(ThreadLocalRandom.current().nextInt(0, names.size() - 1));
+        return names.get(ThreadLocalRandom.current().nextInt(0, names.size()));
     }
 
     public static Date getRandomDoB() {
