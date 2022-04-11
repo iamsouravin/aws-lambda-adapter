@@ -44,6 +44,7 @@ public class PetsController {
             newPet.setName(PetData.getRandomName());
             newPet.setBreed(PetData.getRandomBreed());
             newPet.setDateOfBirth(PetData.getRandomDoB());
+            newPet.setImgUrl(PetData.getImgUrlForBreed(newPet.getBreed()));
             outputPets[i] = newPet;
         }
 
@@ -57,6 +58,7 @@ public class PetsController {
         newPet.setBreed(PetData.getRandomBreed());
         newPet.setDateOfBirth(PetData.getRandomDoB());
         newPet.setName(PetData.getRandomName());
+        newPet.setImgUrl(PetData.getImgUrlForBreed(newPet.getBreed()));
         return newPet;
     }
 

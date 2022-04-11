@@ -6,6 +6,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 
 
@@ -19,6 +21,17 @@ public class PetData {
         breeds.add("Dalmatian");
         breeds.add("Jack Russell Terrier");
         breeds.add("Norwegian Elkhound");
+    }
+
+    private static Map<String, String> imgs = new HashMap<>();
+    static {
+        imgs.put(breeds.get(0), "/images/afghanhound.jpg");
+        imgs.put(breeds.get(1), "/images/beagle.jpg");
+        imgs.put(breeds.get(2), "/images/bernesemountaindog.jpg");
+        imgs.put(breeds.get(3), "/images/bloodhound.jpg");
+        imgs.put(breeds.get(4), "/images/dalmatian.jpg");
+        imgs.put(breeds.get(5), "/images/jackrussellterrier.jpg");
+        imgs.put(breeds.get(6), "/images/norwegianelkhound.jpg");
     }
 
     private static List<String> names = new ArrayList<>();
@@ -101,5 +114,9 @@ public class PetData {
 
         gc.set(Calendar.DAY_OF_YEAR, dayOfYear);
         return gc.getTime();
+    }
+    
+    public static String getImgUrlForBreed(String breed) {
+        return imgs.get(breed);
     }
 }

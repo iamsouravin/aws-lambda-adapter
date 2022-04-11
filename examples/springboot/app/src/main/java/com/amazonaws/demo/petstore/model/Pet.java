@@ -8,6 +8,7 @@ public class Pet {
     private String breed;
     private String name;
     private Date dateOfBirth;
+    private String imgUrl;
 
     public String getId() {
         return id;
@@ -39,5 +40,13 @@ public class Pet {
 
     public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+    }
+    
+    public String getImgUrl() {
+        return imgUrl;
+    }
+    
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 }
