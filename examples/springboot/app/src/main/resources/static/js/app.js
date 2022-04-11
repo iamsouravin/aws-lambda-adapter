@@ -21,7 +21,7 @@ function reqListener() {
         petImage = document.createElement('img');
         petImage.width = '150';
         petImage.height = '100';
-        petImage.src = encodeURI('images/' + pet.breed + '.jpg');
+        petImage.src = pet.imgUrl;
         petCard.appendChild(petImage);
         petNameHeader = document.createElement('h3');
         petNameHeader.innerHTML = pet.name;
@@ -37,12 +37,12 @@ function reqListener() {
         petsContainer.appendChild(petColumn);
     }
 }
+function leftPadZero(val) {
+    return val < 10 ? '0' + val : val;
+}
 function loadPets() {
     var oReq = new XMLHttpRequest();
     oReq.addEventListener("load", reqListener);
-    oReq.open("GET", "pets");
+    oReq.open("GET", "/pets");
     oReq.send();
-}
-function leftPadZero(val) {
-    return val < 10 ? '0' + val : val;
 }

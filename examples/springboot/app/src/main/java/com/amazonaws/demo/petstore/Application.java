@@ -42,7 +42,7 @@ public class Application {
         @Override
         public void addResourceHandlers(ResourceHandlerRegistry registry) {
             registry.addResourceHandler("/**")
-            .addResourceLocations("classpath:/static-files/")
+            .addResourceLocations("classpath:/static/")
             .setCachePeriod(30*24*60*60);
         }
     }
