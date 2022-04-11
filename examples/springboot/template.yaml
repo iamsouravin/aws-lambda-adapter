@@ -30,12 +30,12 @@ Resources:
         Root:
           Type: HttpApi
           Properties:
-            Path: /v1
+            Path: /
             Method: ANY
         Petstore:
           Type: HttpApi
           Properties:
-            Path: /v1/{proxy+}
+            Path: /{proxy+}
             Method: ANY
     Metadata:
       DockerTag: java8.al2-maven-v1
@@ -73,7 +73,7 @@ Resources:
           Unit: Count
 
 Outputs:
-  PetstoreApi:
+  PetstoreUrl:
     Description: "API Gateway endpoint URL for Prod stage for Petstore function"
-    Value: !Sub "https://${ServerlessHttpApi}.execute-api.${AWS::Region}.${AWS::URLSuffix}/v1"
+    Value: !Sub "https://${ServerlessHttpApi}.execute-api.${AWS::Region}.${AWS::URLSuffix}/"
 
