@@ -64,7 +64,7 @@ PetstoreUrl - URL for application            https://xxxxxxxxxx.execute-api.us-w
 ---------------------------------------------------------------------------------------------------------
 ...
 
-$ curl https://xxxxxxxxxx.execute-api.us-west-2.amazonaws.com/v1/pets
+$ curl https://xxxxxxxxxx.execute-api.us-west-2.amazonaws.com/pets
 ```
 
 ## Run the docker locally
